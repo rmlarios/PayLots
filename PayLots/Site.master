@@ -1,0 +1,797 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PayLots.SiteMaster" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <%-- <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />--%>
+    <title>Sistema de Control de Pagos de Lotes</title>
+  <%--  <script type="text/javascript" src='<%= ResolveUrl("~/Scripts/jquery-3.3.1.min.js") %>'></script>--%>
+    <%--<script type="text/javascript" src='<%= ResolveUrl("~/Scripts/jquery.min.js")%>'></script>--%>
+    <%--<script type="text/javascript" src="/Scripts/popper.min.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>--%>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/scriptToast.js"></script>
+    <script src="../Scripts/toastr.min.js"></script>
+
+
+    <%--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"/>--%>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+   <%-- <link rel="stylesheet" href='<%# ResolveUrl("~/Content/font-awesome.min.css") %>' />--%>
+    <%--<script type="text/javascript">
+        function disableBackButton() {
+            window.history.forward();
+        }
+        setTimeout("disableBackButton()", 0);
+    </script>--%>
+  
+  
+    <style type="text/css">
+        /* Header */
+        .app-header {
+            /*padding: 0 !important;*/
+            box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.2);
+            border-bottom-width: 0 !important;
+            padding: 0 !important;
+        }
+        
+
+
+            .app-header .left-block {
+                float: left;
+            }
+
+            .app-header .right-block {
+                float: right;
+            }
+
+            .app-header .menu-container {
+                overflow: hidden;
+            }
+
+                .app-header .menu-container > div {
+                    float: right;
+                }
+
+        .header-logo {
+            background: url('Images/logo.svg') no-repeat center;
+            height: 26px;
+            width: 150px;
+        }
+
+        @media (max-width: 359px) {
+            .header-logo {
+                background: url('Images/logo-small.svg') no-repeat center;
+                width: 26px;
+            }
+        }
+
+        .app-header .left-block .header-menu .image-item > .dxm-content {
+            padding: 0 8px 0 8px;
+        }
+
+        .app-header .right-block .header-menu .image-item > .dxm-content {
+            padding: 0 7px 0 7px;
+        }
+
+        .app-header .left-block .header-menu .item.toggle-item > .dxm-content {
+            padding: 0 14px 0 14px;
+        }
+
+        .app-header .right-block .header-menu .item.toggle-item > .dxm-content {
+            padding: 0 14px 0 14px;
+        }
+
+        .app-header .header-menu .item.selected {
+            color: inherit;
+            box-sizing: border-box;
+            /* DXCOMMENT: Duplicates color from the web.config (devexpress->themes->baseColor) */
+            border-bottom: solid 2px #5E5752;
+        }
+
+        .app-header .header-menu .item.selected,
+        .app-header .header-menu .item.hovered {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+            .app-header .header-menu .item.selected .dxm-content {
+                margin-bottom: -2px;
+            }
+
+            .app-header .header-menu .item.selected .dxm-content,
+            .app-header .header-menu .item.hovered .dxm-content {
+                color: inherit;
+            }
+
+        .header-sub-menu {
+            width: 100% !important;
+        }
+
+            .header-sub-menu .item {
+                padding: 12px 7px !important;
+            }
+    </style>
+        <style>
+        html, body, .form {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            min-height: 100%;
+            padding-top: 1px;
+            margin-top: -1px;
+        }
+
+        .form {
+            padding-bottom: 60px; /* Footer Height */
+        }
+
+        html, .form {
+            height: 100%;
+        }
+
+
+
+
+
+
+        .footer-wrapper {
+            height: 46px; /* Footer Height */
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index:-1;
+        }
+
+        .footer {
+            font-size: 12.5px;
+            color: #999999;
+            text-align: center;
+        }
+
+        .footer-left {
+            float: left;
+        }
+
+        .footer-right {
+            float: right;
+        }
+
+        .footer-left,
+        .footer-center,
+        .footer-right {
+            padding: 16px 24px;
+        }
+
+
+
+        #main {
+            /*background-color:lightsteelblue;*/
+            min-height: 100%;
+            height: 100%;
+        }
+
+        /* Add a gray right border to all list items, except the last item (last-child) */
+        li {
+            /*border-right: 1px solid #bbb;*/
+        }
+
+            li:hover, .dropdown-item:hover {
+                /* background-color : deepskyblue;*/
+            }
+
+            li:last-child {
+                /*border-right: none;*/
+            }
+        /*li:last-child:hover{
+               background-color:inherit;
+           }*/
+
+        .dxgvCommandColumn_MaterialCompact a {
+            margin: 0 0 0 0;
+        }
+
+        .dxgvHeader_MaterialCompact a {
+            /*color:azure;*/
+        }
+
+        .dxbButton_MaterialCompact[class~="dxgvCommandColumnItem_MaterialCompact"],
+        .dxgvEditFormTable_MaterialCompact div.dxbButton_MaterialCompact {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .dxgvHeader_MaterialCompact a.dxgvCommandColumnItem_MaterialCompact {
+            margin: 0 0 0 0;
+        }
+
+        .dxflElConSys > div {
+            display: initial;
+        }
+
+        .dxpcLite_MaterialCompact .dxpc-header,
+        .dxdpLite_MaterialCompact .dxpc-header {
+            /*background-color: #a2f3c3;*/
+        }
+
+        .dxgvDataRow_MaterialCompact td.dxgv {
+            border-color: #9f9f9f;
+        }
+
+        .dxgvHeader_MaterialCompact {
+            /*background-color:#cfcfcf;
+            color:white;*/
+        }
+
+        .dxpnlControl_Moderno.dxpnl-edge, .dxpnlControl_Moderno.dxpnl-edge.dxpnl-bar {
+            background-color: #2f3b46;
+        }
+
+        .leftPanel {
+            width: 20%;
+            /*max-width: 150px;
+            min-width: 80px;*/
+            /*background-color: #F3EAFB !important;*/
+            /*background-color: #f2f2f2 !important;*/
+            /*background-image:linear-gradient(rgb(10, 42, 63), rgb(45, 66, 107));*/
+            /*/background-image:linear-gradient(rgb(45, 66, 107), rgb(10, 42, 63));*/
+            background-color: #2f3b46;
+            bottom: 38px;
+            top: -38px;
+            left: 1px;
+            border: none;
+        }
+
+        .topPanel {
+            /*background-color: #DBF4DE !important;*/
+            /*padding: 20px 0 20px !important;*/
+            /*background-image: linear-gradient(rgb(10, 42, 63), rgb(45, 66, 107));*/
+            background-color: #2f3b46;
+            border: none;
+        }
+
+        .panelContent {
+            font-size: 12px;
+            text-align: center;
+            white-space: normal;
+        }
+
+        .content {
+            width: 100%;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            min-height: 100%;
+            height: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .custom-nav-bar {
+            width: 100%;
+            padding: 0!important;
+        }
+
+        .loginname {
+           
+            color:white;
+        }
+
+        .card-header {
+            font-weight: bold;
+        }
+
+        .main {
+            color: floralwhite;
+            /*background-color:#6897e3;*/
+            /*background-color:#007bff;*/
+            /*background-color: #a5b4c1;*/
+            background-color:#86929c;
+            font-size: large;
+        }
+
+        .details {
+            border-left: 1px solid rgba(0,0,0,.125);
+            border-right: 1px solid rgba(0,0,0,.125);
+        }
+
+        .dxnbLite_MaterialCompact .dxnb-itemSelected a {
+            background-image: linear-gradient(#357eb8,hsla(180, 67%, 12%, 0));
+            background-color: transparent;
+        }
+
+        .dxnbLite_MaterialCompact .dxnb-itemSelected.dxnb-itemHover a {
+            /*background-color:aliceblue;*/
+            /*background-color: ActiveBorder;*/
+        }
+
+            .loader {
+                border: 10px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 10px solid #3498db;
+                width: 50px;
+                height: 50px;
+                -webkit-animation: spin 1s linear infinite;
+                animation: spin 1s linear infinite;
+            }
+
+            @-webkit-keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+  
+                }
+
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .expanded{
+                background-image: url('Content/Imagenes/icons8-menu-48.png');
+                background-repeat:no-repeat;
+                background-color:transparent;
+                width:48px;
+                height:48px;
+            }
+
+            .collapsed{
+                
+                background-image: url('Content/Imagenes/close-button.png');
+                background-repeat:no-repeat;
+                background-color:transparent;
+                width:48px;
+                height:48px;
+               
+            }
+
+            .avatar{
+                border-radius:50%;
+                background-color:antiquewhite;
+            }
+
+
+    </style>
+    <asp:ContentPlaceHolder runat="server" ID="head">
+        <script src='<%= ResolveUrl("~/Scripts/jquery-3.3.1.min.js") %>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/scriptToast.js") %>'></script>
+    <script src='<%= ResolveUrl("~/Scripts/toastr.min.js") %>'></script>
+    
+
+        
+    </asp:ContentPlaceHolder>
+
+  
+    
+
+    <script type="text/javascript">
+          function disableBackButton() {
+        window.history.forward();
+    }
+    setTimeout("disableBackButton()", 0);
+
+    function checkKeyCode(evt) {
+
+        var evt = (evt) ? evt : ((event) ? event : null);
+        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+        if (event.keyCode == 116) {
+            evt.keyCode = 0;
+            return false
+        }
+    }
+    document.onkeydown = checkKeyCode;
+    </script>
+    <script type="text/javascript">
+        window.addEventListener("resize", onResize);
+        var panelExpanded;
+     
+        function onResize(s, e) {
+            var toggleButton = leftAreaMenu.GetItemByName('ToggleLeftPanel');
+           
+            if (leftPanel.IsExpanded() && leftPanel.GetVisible()) {
+                toggleButton.SetChecked(false);
+            }
+            else if(leftPanel.IsExpanded()!=leftPanel.GetVisible()) {
+                          toggleButton.SetChecked(true);
+            }
+            //if (leftPanel.IsExpandable) {
+            //    if (panelExpanded != leftPanel.IsExpanded()) {
+            //        if (leftPanel.IsExpanded())
+            //            toggleButton.SetChecked(true);
+            //        else
+            //            toggleButton.SetChecked(false);
+            //    }
+            //    panelExpanded = leftPanel.IsExpanded();
+            //}
+            //else {
+            //            toggleButton.SetChecked(!leftPanel.GetVisible());
+            //}
+        }
+    </script>
+
+</head>
+<body style="padding-top: 20px;">
+    <form id="form1" runat="server" style="height:100%;">
+        <asp:ScriptManager ID="ScriptManagerMaster" runat="server" ScriptMode="Auto"></asp:ScriptManager>
+        <dx:ASPxPanel runat="server" ID="HeaderPanel" ClientInstanceName="headerPanel" EnableHierarchyRecreation="false" FixedPosition="WindowTop"
+            FixedPositionOverlap="true" CssClass="app-header">
+            <PanelCollection>
+                <dx:PanelContent ID="PanelContent1" runat="server">
+                    <div class="left-block">
+                        
+                         <script type="text/javascript">
+
+    function PrepareTimeValue(value) {
+        if (value < 10)
+            value = "0" + value;
+        return value;
+    }
+    function UpdateTime(s, e) {
+        var dateTime = new Date();
+        var timeString = PrepareTimeValue(dateTime.getHours()) + ":" + PrepareTimeValue(dateTime.getMinutes()) + ":" +
+            PrepareTimeValue(dateTime.getSeconds());
+        lbltime.SetText(timeString);
+            }
+            </script>
+                      <asp:UpdateProgress runat="server" DisplayAfter="0" DynamicLayout="false">
+                    <ProgressTemplate>
+                                   
+                        <div style="position: fixed; text-align: center; width: 10%; /*background-color:#FFFFFF;*/ top: 1%; right: 50%; left: 50%; z-index: 9999999;">
+                            <div class="row justify-content-center">
+                         <div class="loader"></div>
+                            </div>
+                            <div class="row justify-content-center text-white">
+                                <strong>Procesando...</strong>
+                            </div>
+                        </div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+
+
+
+
+
+
+                        <dx:ASPxTimer ClientInstanceName="timer" ClientSideEvents-Init="UpdateTime" Interval="1000" ClientSideEvents-Tick="UpdateTime" runat="server">
+<ClientSideEvents Tick="UpdateTime" Init="UpdateTime"></ClientSideEvents>
+                         </dx:ASPxTimer>
+                        <asp:UpdatePanel runat="server" ID="UdpTitle"><ContentTemplate>
+                        <dx:ASPxMenu runat="server" ID="LeftAreaMenu" ClientInstanceName="leftAreaMenu"                          
+                            ItemAutoWidth="false" ItemWrap="true" SeparatorWidth="0" EnableHotTrack="false"
+                            Width="100%" CssClass="header-menu" SyncSelectionMode="None">
+                            <SettingsAdaptivity Enabled="true" CollapseRootItemsToIconsAtWindowInnerWidth="700" EnableAutoHideRootItems="true" EnableCollapseRootItemsToIcons="true" />
+                            <ItemStyle VerticalAlign="Middle" CssClass="item" CheckedStyle-BackColor="Transparent" CheckedStyle-Border-BorderColor="Transparent" />
+                          
+
+                            <Items>
+                                <dx:MenuItem Text="Sistema de Control de Pagos" AdaptiveText="Pagos" ItemStyle-ForeColor="White" ItemStyle-Font-Size="X-Large" Name="ToggleLeftPanel"  GroupName="LeftPanel" >
+                                   <%-- <ItemStyle CssClass="toggle-item vertically-aligned" CheckedStyle-CssClass="checked selected">
+                                        <CheckedStyle CssClass="checked selected"></CheckedStyle>
+                                    </ItemStyle>--%>
+                                  <Image Url="Content/Imagenes/icons8-menu-48.png" UrlChecked="Content/Imagenes/icons8-menu-48-open.png" Height="48px" Width="48px"></Image>
+                                    <%--<Image SpriteProperties-CheckedCssClass="collapsed"></Image>--%>
+                                  <%--  <Image Height="24px" Width="24px" IconID="spreadsheet_chartgridlineshorizontal_major_svg_32x32" />--%>
+                                   
+                                </dx:MenuItem>
+
+                                <%--<dx:MenuItem Text="Sistema de Control de Pagos"  AdaptiveText="Pagos" ItemStyle-Font-Size="X-Large" ItemStyle-ForeColor="White" ItemStyle-CssClass="vertically-aligned" ItemStyle-Wrap="True" NavigateUrl="~/">
+                                    
+                                    <ItemStyle CssClass="vertically-aligned"></ItemStyle>
+
+                                </dx:MenuItem>--%>
+                            </Items>
+                            <ClientSideEvents ItemClick="function(s,e){if(leftPanel.IsExpandable()) {
+            leftPanel.Toggle();
+                               
+        }
+        else {
+            leftPanel.SetVisible(!leftPanel.GetVisible());}}" />
+                        </dx:ASPxMenu>
+                      </ContentTemplate></asp:UpdatePanel>
+                    </div>
+
+                    <div class="right-block">
+                        <dx:BootstrapMenu ID="AnonymousMenu" Width="100%"  runat="server" ShowPopOutImages="false" OnItemClick="LoggedInMenuMenu_ItemClick" ItemAutoWidth="false">
+                            <%--<CssClasses Control="top-auth-menu" Menu="navbar-nav"/>--%>
+
+                            <Items>
+                                <dx:BootstrapMenuItem Text="" Visible="true" Name="Time">
+                                    <Template>
+                                       <div style="padding-top:40%;">
+                                        <dx:ASPxLabel ID="lbltime" ForeColor="White" Font-Bold="true" runat="server" ClientInstanceName="lbltime"></dx:ASPxLabel>
+                                       </div>
+                                    </Template>
+                                    
+                                </dx:BootstrapMenuItem>
+                                <dx:BootstrapMenuItem Text="LoginUser" TextCssClass="loginname" Name="LoginUser">
+                                    
+                                    <TextTemplate>
+                                        <div class="row text-center">
+                                            <div class="col-md-12">
+                                        <dx:ASPxBinaryImage ID="ImgAvatar" CssClass="avatar" runat="server" EmptyImage-Url="~/Content/Imagenes/img_avatar2.png" EditingSettings-Enabled="false" Height="45" Width="45"></dx:ASPxBinaryImage>
+                                                </div>
+                                            <div class="col-md-12">
+                                        <dx:ASPxLabel ID="lblUserName" runat="server" CssClass="loginname" Text='<%#AnonymousMenu.Items.FindByName("LoginUser").Text%>'></dx:ASPxLabel>
+                                                </div>
+                                            </div>
+                                    </TextTemplate>
+                                    <Items>
+
+                                        <dx:BootstrapMenuItem Text="Editar Cuenta" IconCssClass="fa fa-2x fa-user-secret" Name="Recovery" NavigateUrl="Account/ChangePassword.aspx" CssClass="item"></dx:BootstrapMenuItem>
+                                        <dx:BootstrapMenuItem Text="Cerrar Sesión" Name="Logout" IconCssClass="fa fa-2x fa-sign-out" CssClass="item"></dx:BootstrapMenuItem>
+                                    </Items>
+                                </dx:BootstrapMenuItem>
+
+                            </Items>
+                            <CssClasses Control="header-menu" MenuItem="item" SubMenuItem="item" />
+                        </dx:BootstrapMenu>
+                    </div>
+
+
+
+                </dx:PanelContent>
+            </PanelCollection>
+        </dx:ASPxPanel>
+        <%--<nav class="navbar navbar-expand-lg" id="leftPanel1">
+            <div class="collapse navbar-collapse" id="topMenu">--%>
+        <dx:ASPxPanel runat="server" EnableHierarchyRecreation="false" ID="LeftPanel" ClientInstanceName="leftPanel" FixedPositionOverlap="false"
+            Collapsible="true" SettingsCollapsing-Modal="true" ScrollBars="Auto" FixedPosition="WindowLeft" Width="210px"
+            CssClass="leftPanel" Paddings-Padding="0" Styles-ExpandBar-CssClass="expand-bar" EnableClientSideAPI="true">
+            <Styles>
+                <ExpandBar Width="0px"></ExpandBar>
+            </Styles>
+
+            <SettingsAdaptivity CollapseAtWindowInnerWidth="980" />
+            <SettingsCollapsing ExpandButton-Visible="false" ExpandEffect="PopupToRight" AnimationType="Slide" Modal="true">
+
+                <ExpandButton Visible="False"></ExpandButton>
+
+            </SettingsCollapsing>
+
+            <Paddings Padding="0px"></Paddings>
+            <PanelCollection>
+                <dx:PanelContent>
+                    <div class="panelContent">
+                        <asp:UpdatePanel ID="UpdMenuPrincipal" runat="server">
+                            <ContentTemplate>
+                                <dx:ASPxNavBar ID="nbMain" SyncSelectionMode="CurrentPath" ClientInstanceName="navMain" BorderTop-BorderWidth="0px" Font-Bold="False" ExpandButtonPosition="Right" BackColor="Transparent" OnItemClick="nbMain_ItemClick" runat="server" AllowSelectItem="True" EnableAnimation="True" Theme="MaterialCompact" CssClass="custom-nav-bar">
+                                    <GroupHeaderStyle BackColor="Transparent" ForeColor="White" Font-Bold="false" Font-Size="Small">
+                                        <BorderLeft BorderStyle="None" />
+                                        <BorderTop BorderStyle="None" />
+                                        <BorderRight BorderStyle="None" />
+                                        <BorderBottom BorderColor="#66666b" BorderStyle="Inset" BorderWidth="1px" />
+                                    </GroupHeaderStyle>
+                                    <ItemStyle BackColor="Transparent" Font-Italic="true" ForeColor="White" Font-Bold="false" Paddings-PaddingLeft="35px" Paddings-PaddingRight="5px">
+                                        <Paddings PaddingLeft="35px" PaddingRight="5px" />
+                                    </ItemStyle>
+                                    <GroupContentStyle ForeColor="White" Font-Bold="false" BackColor="Transparent" Border-BorderWidth="0px" BorderBottom-BorderWidth="1px" BorderBottom-BorderColor="#66666b">
+                                        <BorderBottom BorderColor="#66666B" BorderWidth="1px" />
+                                    </GroupContentStyle>
+                                    <Groups>
+
+                                        <dx:NavBarGroup Text="Inicio" Name="Home" NavigateUrl="Default.aspx" Expanded="false">
+                                            <HeaderStyle HorizontalAlign="Center" />
+                                            <HeaderImage IconID="navigation_home_32x32">
+                                            </HeaderImage>
+                                            <ItemImage IconID="navigation_home_32x32">
+                                            </ItemImage>
+                                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" BorderTop-BorderWidth="0px">
+                                                <BorderTop BorderWidth="0px" />
+                                            </ItemStyle>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup Text="Dashboard" Visible="false" Name="Dashboard" NavigateUrl="Dashboard.aspx" Expanded="false">
+                                            <HeaderStyle HorizontalAlign="Center" />
+                                            <HeaderImage IconID="xaf_action_dashboard_showdesigner_32x32">
+                                            </HeaderImage>
+                                            <ItemImage IconID="navigation_home_32x32">
+                                            </ItemImage>
+                                            <ItemStyle HorizontalAlign="Left" VerticalAlign="Middle" BorderTop-BorderWidth="0px">
+                                                <BorderTop BorderWidth="0px" />
+                                            </ItemStyle>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup ExpandButtonPosition="Right" Text="Catálogos" Expanded="false">
+
+                                            <HeaderImage IconID="chart_chartsshowlegend_32x32">
+                                            </HeaderImage>
+                                            <Items>
+                                                <dx:NavBarItem Text="Asentamientos" Name="Ubicaciones" NavigateUrl="Ubicaciones/Ubicaciones.aspx">
+                                                    <Image IconID="maps_geopointmap_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Text="Lotes" Name="Lotes" NavigateUrl="Lotes/Lotes.aspx">
+                                                    <Image IconID="maps_valuecolorizermap_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Text="Beneficiarios" Name="Beneficiarios" NavigateUrl="Beneficiarios/Beneficiarios.aspx">
+
+                                                    <Image IconID="people_usergroup_32x32">
+                                                    </Image>
+
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Text="Rangos Mora" Name="RangosMora" NavigateUrl="Moras/Moras.aspx">
+
+                                                    <Image IconID="scheduling_today_32x32">
+                                                    </Image>
+
+                                                </dx:NavBarItem>
+                                            </Items>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup ExpandButtonPosition="Right" Text="Asignaciones" Name="Asignaciones" Expanded="false">
+
+                                            <HeaderImage IconID="people_assignto_32x32">
+                                            </HeaderImage>
+                                            <Items>
+                                                <dx:NavBarItem Text="Listado" Name="ListadoAsignaciones" NavigateUrl="Asignaciones/Asignaciones.aspx">
+                                                    <Image IconID="format_listnumbers_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Text="Registrar" Name="RegistrarAsignacion">
+                                                    <Image IconID="snap_snapinsertfooter_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Text="Proformas" Name="RegistrarProforma" NavigateUrl="Asignaciones/Proforma.aspx">
+                                                    
+                                                    <Image Height="34px" Url="~/Content/Imagenes/proforma.png" Width="34px">
+                                                    </Image>
+                                                    
+                                                </dx:NavBarItem>
+                                            </Items>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup Name="Pagos" ExpandButtonPosition="Right" Text="Pagos" Expanded="false">
+                                            <HeaderImage IconID="functionlibrary_financial_32x32">
+                                            </HeaderImage>
+                                            <Items>
+                                                <dx:NavBarItem Name="ConsolidadoPagos" NavigateUrl="Pagos/ConsolidadoPagos.aspx" Text="Consolidado">
+                                                    <Image IconID="grid_pivot_32x32office2013"></Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="PagosRealizados" NavigateUrl="Pagos/ListadoPagos.aspx" Text="Pagos Realizados">
+                                                    <Image Height="32px" Url="~/Content/Imagenes/pagos.png" Width="32px"></Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="ListadoPagos" NavigateUrl="Pagos/Pagos.aspx" Text="Listado">
+                                                    <Image IconID="format_listnumbers_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="RegistrarPago" Text="Registrar">
+                                                    <Image IconID="snap_snapinsertfooter_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                              
+                                            </Items>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup Name="Reportes" ExpandButtonPosition="Right" Text="Reportes" Expanded="false">
+                                            <HeaderImage IconID="toolboxitems_report2_32x32"></HeaderImage>
+                                            <Items>
+                                                <dx:NavBarItem Name="PagosFechas" Text="PagosFechas" NavigateUrl="Reportes/PagosFechas.aspx">
+                                                    <Image IconID="scheduling_calendar_32x32"></Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="EstadoCuenta" Text="Estados de Cuenta">
+                                                    <Image IconID="numberformats_accounting_32x32"></Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="PagosVencidos" Text="Morosos" NavigateUrl="Reportes/PagosVencidos.aspx">
+                                                    <Image IconID="print_preview_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                            </Items>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup ExpandButtonPosition="Right" Text="Ajustes" ToolTip="Ajustes del Sistema/Usuarios" Name="Administrar" Expanded="false">
+                                            <HeaderImage Height="32px" ToolTip="Configuraciones" Url="~/Content/Imagenes/Setting-icon.png" Width="32px">
+                                            </HeaderImage>
+                                            <Items>
+                                                <dx:NavBarItem Name="Usuarios" NavigateUrl="~/Account/Register.aspx" Text="Usuarios">
+                                                    <Image IconID="businessobjects_bouser_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="Empresa" NavigateUrl="Configuraciones/Configuraciones.aspx" Text="Datos Empresa">
+                                                    <Image Height="32px" Url="~/Content/Imagenes/building.png" Width="32px">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                            </Items>
+                                        </dx:NavBarGroup>
+                                        <dx:NavBarGroup Name="Desarrollo" Text="Desarrollo" ExpandButtonPosition="Right" Expanded="false">
+                                            
+                                            <HeaderImage Height="32px" Url="~/Content/Imagenes/developer.png" Width="32px">
+                                            </HeaderImage>
+                                            
+                                            <Items>
+                                                <dx:NavBarItem Name="Auditoria" Text="Auditoria" NavigateUrl="Auditoria/RegistroErrores.aspx">
+                                                    <Image IconID="businessobjects_bochangehistory_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                                <dx:NavBarItem Name="ReportDesigner" Text="Diseñador" NavigateUrl="Reportes/ReportDesigner.aspx">
+                                                    <Image IconID="reports_designreport_32x32">
+                                                    </Image>
+                                                </dx:NavBarItem>
+                                            </Items>
+                                        </dx:NavBarGroup>
+                                    </Groups>
+
+                                    <BorderTop BorderWidth="0px" />
+
+                                </dx:ASPxNavBar>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+                    </div>
+
+                </dx:PanelContent>
+
+            </PanelCollection>
+            <ClientSideEvents Init="function(s,e){var toggleButton = leftAreaMenu.GetItemByName('ToggleLeftPanel');toggleButton.SetChecked(!leftPanel.IsExpanded());}" Expanded="function(s,e){leftAreaMenu.GetItemByName('ToggleLeftPanel').SetChecked(false);}" Collapsed="function(s,e){leftAreaMenu.GetItemByName('ToggleLeftPanel').SetChecked(true);}" />
+        </dx:ASPxPanel>
+        <%-- <dx:BootstrapAccordion ID="BootstrapAccordion1" runat="server" AutoCollapse="true" Width="250" ExpandButtonPosition="Right"
+                ShowExpandButtons="true" ExpandGroupAction="Click">
+                <CssClasses Control="ctrl-fixed-width" />
+               <Groups>
+                   <dx:BootstrapAccordionGroup AllowExpanding="true" Expanded="false" Text="Catálogos">
+                       <Items>
+                           <dx:BootstrapAccordionItem Text="Ubicaciones" IconCssClass="fa fa-2x fa-bookmark"></dx:BootstrapAccordionItem>
+                           <dx:BootstrapAccordionItem Text="Beneficiarios" IconCssClass="fa fa-address-book fa-2x"></dx:BootstrapAccordionItem>
+                       </Items>
+                   </dx:BootstrapAccordionGroup>
+               </Groups>
+            </dx:BootstrapAccordion>--%>
+
+        <%--  </div>
+            
+            </nav>--%>
+        <div class="container" id="main" style="max-width: 1500px; text-align: -webkit-center; text-align: center; margin-top: -2%; padding-left: 0px; padding-right: 0px;">
+            
+               <%-- <asp:UpdateProgress runat="server" DisplayAfter="0" DynamicLayout="false">
+                    <ProgressTemplate>
+                                   
+                        <div style="position: fixed; text-align: center; width: 10%; background-color:#FFFFFF; top: 10%; right: 50%; left: 50%; z-index: 9999999;opacity:0.5;">
+                            <div class="row justify-content-center">
+                                <div class="spinner-border text-primary" role="status"></div>
+                                <div class="spinner-border text-success" role="status"></div>
+                                <div class="spinner-border text-info" role="status"></div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <strong>Procesando...</strong>
+                            </div>
+                        </div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>--%>
+           
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+               <div class="footer-wrapper" id="footerWrapper">
+                <div class="footer">
+                    <span class="footer-right">&copy;<%: DateTime.Now.Year %> - Desarrollado por DevMalc</span>
+
+                </div>
+            </div>
+
+                     </div>
+      
+    </form>
+  
+         <%--   <div class="footer-wrapper">
+                <div class="footer">
+                    <span class="footer-right">&copy;<%: DateTime.Now.Year %> - Desarrollado por DevMalc</span>
+
+                </div>
+            </div>--%>
+  
+</body>
+    
+</html>

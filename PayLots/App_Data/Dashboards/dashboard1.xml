@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="chr-Cher-US">
+  <Title Text="Sistema de Control de Pagos">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</Title>
+  <DataSources>
+    <SqlDataSource Name="View_Dashboard_1" ComponentName="sqlDataSource1">
+      <Connection Name="PayLotsConnectionString" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="View_Dashboard_1">
+        <Tables>
+          <Table Name="View_Dashboard_1" />
+        </Tables>
+        <Columns>
+          <Column Table="View_Dashboard_1" Name="NombreProyecto" />
+          <Column Table="View_Dashboard_1" Name="Bloque" />
+          <Column Table="View_Dashboard_1" Name="Pagado" />
+          <Column Table="View_Dashboard_1" Name="MesPagado" />
+          <Column Table="View_Dashboard_1" Name="Estado" />
+          <Column Table="View_Dashboard_1" Name="IdLote" />
+          <Column Table="View_Dashboard_1" Name="FAR" />
+          <Column Table="View_Dashboard_1" Name="MontoTotal" />
+          <Column Table="View_Dashboard_1" Name="Saldo" />
+          <Column Table="View_Dashboard_1" Name="NombreCompleto" />
+          <Column Table="View_Dashboard_1" Name="NombreLote" />
+          <Column Table="View_Dashboard_1" Name="EstadoAsignacion" />
+          <Column Table="View_Dashboard_1" Name="IdUbicacion" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+      <CalculatedFields>
+        <CalculatedField Name="Campo calculado 1" Expression="([MontoTotal] - [Saldo]) / [MontoTotal]" DataType="Auto" DataMember="View_Dashboard_1" />
+      </CalculatedFields>
+    </SqlDataSource>
+    <SqlDataSource Name="DatosEmpresa" ComponentName="sqlDataSource2">
+      <Connection Name="PayLotsConnectionString" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="DatosEmpresa">
+        <Tables>
+          <Table Name="DatosEmpresa" />
+        </Tables>
+        <Columns>
+          <Column Table="DatosEmpresa" Name="Logo" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <BoundImage ComponentName="boundImageDashboardItem1" Name="" DataSource="sqlDataSource2" DataMember="DatosEmpresa" SizeMode="Zoom" VerticalAlignment="Top">
+      <DataItems>
+        <Dimension DataMember="Logo" DefaultId="DataItem0" />
+      </DataItems>
+      <ImageItem DefaultId="DataItem0" />
+    </BoundImage>
+    <Chart ComponentName="chartDashboardItem1" Name="Monto Recaudado por Mes" DataSource="sqlDataSource1" DataMember="View_Dashboard_1">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Measure DataMember="Pagado" DefaultId="DataItem0">
+          <NumericFormat FormatType="Currency" IncludeGroupSeparator="true" />
+        </Measure>
+        <Dimension DataMember="FAR" DateTimeGroupInterval="DayMonthYear" ColoringMode="Hue" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Panel 1">
+          <Series>
+            <Simple SeriesType="Line">
+              <Value DefaultId="DataItem0" />
+              <PointLabelOptions ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Detalles de Lotes" DataSource="sqlDataSource1" DataMember="View_Dashboard_1" PieType="Donut" LabelContentType="ArgumentAndValue" ContentLineCount="1">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Dimension DataMember="NombreProyecto" DefaultId="DataItem0" />
+        <Measure DataMember="IdLote" SummaryType="CountDistinct" DefaultId="DataItem1" />
+        <Dimension DataMember="Estado" ColoringMode="Hue" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Grid ComponentName="gridDashboardItem1" Name="Avance Pagos" DataSource="sqlDataSource1" DataMember="View_Dashboard_1" FilterString="[DataItem5] = 'Asignado' And [DataItem6] = 'Vigente'">
+      <DataItems>
+        <Measure DataMember="MontoTotal" SummaryType="Max" DefaultId="DataItem1">
+          <NumericFormat FormatType="Number" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Dimension DataMember="NombreLote" DefaultId="DataItem0" />
+        <Measure DataMember="Saldo" SummaryType="Max" DefaultId="DataItem2">
+          <NumericFormat FormatType="Number" Unit="Ones" />
+        </Measure>
+        <Measure DataMember="Campo calculado 1" SummaryType="Max" DefaultId="DataItem3">
+          <NumericFormat FormatType="Percent" />
+        </Measure>
+        <Dimension DataMember="NombreCompleto" DefaultId="DataItem4" />
+        <Dimension DataMember="Estado" DefaultId="DataItem5" />
+        <Dimension DataMember="EstadoAsignacion" DefaultId="DataItem6" />
+      </DataItems>
+      <HiddenDimensions>
+        <Dimension DefaultId="DataItem5" />
+        <Dimension DefaultId="DataItem6" />
+      </HiddenDimensions>
+      <GridColumns>
+        <GridDimensionColumn Name="Lote" Weight="66.125966410853167">
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn Weight="118.38681083233389">
+          <Dimension DefaultId="DataItem4" />
+        </GridDimensionColumn>
+        <GridMeasureColumn Name="Valor Total" Weight="51.194296576144389">
+          <Measure DefaultId="DataItem1" />
+        </GridMeasureColumn>
+        <GridMeasureColumn Name="Saldo Pendiente" Weight="69.3256099468622">
+          <Measure DefaultId="DataItem2" />
+        </GridMeasureColumn>
+        <GridMeasureColumn Name="% Pagado" Weight="70.392157792198532" DisplayMode="Bar">
+          <Measure DefaultId="DataItem3" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions EnableBandedRows="true" ColumnWidthMode="Manual" />
+    </Grid>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Proyectos" DataSource="sqlDataSource1" DataMember="View_Dashboard_1" EnableSearch="true">
+      <DataItems>
+        <Dimension DataMember="NombreProyecto" DefaultId="DataItem0" />
+        <Dimension DataMember="Bloque" DefaultId="DataItem1" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+        <Dimension DefaultId="DataItem1" />
+      </FilterDimensions>
+    </TreeView>
+    <Card ComponentName="cardDashboardItem1" Name="Recaudado" DataSource="sqlDataSource1" DataMember="View_Dashboard_1">
+      <DataItems>
+        <Dimension DataMember="NombreProyecto" DefaultId="DataItem0" />
+        <Measure DataMember="Pagado" DefaultId="DataItem1">
+          <NumericFormat FormatType="Number" />
+        </Measure>
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Card>
+        <ActualValue DefaultId="DataItem1" />
+        <AbsoluteVariationNumericFormat />
+        <PercentVariationNumericFormat />
+        <PercentOfTargetNumericFormat />
+        <LayoutTemplate MinWidth="125" Type="Compact">
+          <MainValue Visible="true" ValueType="Title" DimensionIndex="0" />
+          <SubValue Visible="true" ValueType="Subtitle" DimensionIndex="0" />
+          <BottomValue Visible="true" ValueType="ActualValue" DimensionIndex="0" />
+          <BottomSubValue1 Visible="false" ValueType="AbsoluteVariation" DimensionIndex="0" />
+          <BottomSubValue2 Visible="false" ValueType="PercentVariation" DimensionIndex="0" />
+          <DeltaIndicator Visible="true" />
+          <Sparkline Visible="false" />
+        </LayoutTemplate>
+      </Card>
+    </Card>
+  </Items>
+  <ColorScheme>
+    <Entry DataSource="sqlDataSource1" DataMember="View_Dashboard_1" Color="-13831577">
+      <DimensionKeys>
+        <DimensionKey>
+          <Definition DataMember="Estado" />
+          <Value Type="System.String" Value="Disponible" />
+        </DimensionKey>
+      </DimensionKeys>
+    </Entry>
+  </ColorScheme>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup>
+        <LayoutGroup Orientation="Vertical">
+          <LayoutGroup Weight="0.58283671036948748">
+            <LayoutGroup Orientation="Vertical" Weight="0.33842641700504278">
+              <LayoutItem DashboardItem="boundImageDashboardItem1" Weight="0.99546734063526154" />
+              <LayoutItem DashboardItem="cardDashboardItem1" Weight="1.0322395397246489" />
+            </LayoutGroup>
+            <LayoutItem DashboardItem="pieDashboardItem1" Weight="1.7755151979238883" />
+          </LayoutGroup>
+          <LayoutGroup Weight="1.4171632896305124">
+            <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="0.44206282022722232" />
+            <LayoutItem DashboardItem="chartDashboardItem1" Weight="1.5458601602900388" />
+            <LayoutItem DashboardItem="gridDashboardItem1" Weight="1.1434203030648287" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>
